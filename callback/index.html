@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProTick | Deriv Connection</title>
+<style>
+body {
+  margin: 0;
+  background: #080e1b;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+main {
+  background: #101c30;
+  border: 1px solid #243752;
+  border-radius: 16px;
+  padding: 30px;
+  width: 82%;
+  max-width: 420px;
+}
+h1 { color: #35a7ff; }
+p { color: #b5c5d9; line-height: 1.6; }
+a { color: #65bcff; }
+</style>
+</head>
+<body>
+<main>
+<h1>⚡ ProTick</h1>
+<h2>Deriv connection</h2>
+<p id="message">Checking your connection response...</p>
+<a href="/">Return to ProTick homepage</a>
+</main>
+<script>
+const params = new URLSearchParams(location.search);
+const message = document.getElementById("message");
+
+if (params.has("error")) {
+  message.textContent =
+    "Deriv login was cancelled or could not be completed.";
+} else if (params.has("code") && params.has("state")) {
+  message.textContent =
+    "Authorization response received. Secure server verification and token exchange must be completed before your account can connect.";
+} else {
+  message.textContent =
+    "This is the ProTick Deriv callback page. Start by connecting through the ProTick homepage.";
+}
+</script>
+</body>
+</html>
